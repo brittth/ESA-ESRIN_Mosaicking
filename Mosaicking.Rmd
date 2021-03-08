@@ -1,0 +1,186 @@
+---
+title: "Mosaicking"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+chunk_output_type: console
+---
+
+# install and load packages
+```{r}
+# install.packages("raster")
+# install.packages("stringr")
+library(raster)
+library(stringr)
+```
+
+# SETTINGS (Adjust them!)
+```{r}
+# set working directory
+# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/" # flight line 1 defective, hence excluded
+input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/01_Single_lines/"
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180718/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"
+# input.dir <- "E:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance/01_Single_lines/"
+# input.dir <- "E:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance_BT_moreLines/01_Single_lines/"
+# input.dir <- "E:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180704_BT/01_APEX/01_TOC_Reflectance/01_Single_lines/"
+# input.dir <- "E:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180730/02_APEX_BT/01_TOC_Reflectance/01_Single_lines/" # ERROR due to different spatial resolutions
+# input.dir <- "E:/FLEXsense/04_Germany_CKA/03_Airborne_data/20180702/01_APEX/02_TOC_Reflectance/" # ERROR source not found
+# input.dir <- "E:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Jülich/"
+# input.dir <- "E:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Selhausen/"
+setwd(input.dir)
+
+# select sensor (define NAs, tolerance, file format)
+sensor = "HyPlant"
+# sensor = "APEX"
+if(sensor == "HyPlant"){
+  # load image file names
+  file.list <- list.files(input.dir, pattern="*.bsq") # HyPlant
+}else{
+  # load image file names
+  file.list <- list.files(input.dir, pattern="*.img") # HyPlant
+}
+# file.list <- file.list[-1] # remove first image from list = defective
+
+#------test subset
+# file.list <- unlist(list(file.list[[1]],file.list[[2]]))# for testing only
+#------
+
+# get example image for band info
+ex.im <- brick(file.list[[1]])
+bandnames <- paste0("Band",sprintf('%0.3d', 1:length(names(ex.im))))
+wlnames <- as.numeric(str_sub(names(ex.im),-9,-2))
+
+#------test subset
+# bandnames <- bandnames[1:2]
+# wlnames <- wlnames[1:2]
+#------
+
+# create folder for band mosaics
+date <- Sys.Date()
+# out.mosaic.id <- "20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
+out.mosaic.id <- "M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_"
+# out.mosaic.id <- "20180718-S3IT-1155-1200-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
+# out.mosaic.id <- "M0231_Gross_180731_a06-8c_v1_Part_0-1_refl_BT_"
+# out.mosaic.id <- "M0231_Gross_180731_a01-8c_v1_Part_0-2_refl_BT_"
+# out.mosaic.id <- "M0216_Gross_180704_a01-06c_v1_Part_0-4_refl_BT_"
+# out.mosaic.id <- "M0230_Gross_180730_a01-08c_v1_Part_0-2_refl_BT_"  # ERROR due to different spatial resolutions
+# out.mosaic.id <- "M0215_S3B_K_180702_a01-02c_v1_Part_0_refl_BT_"  # ERROR source not found
+# out.mosaic.id <- "M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_"
+# out.mosaic.id <- "M0214_S3B_S_180702_a01c_v1_Part_0-1_refl_BT_"
+band.mosaic.dir <- paste0("C:/Users/Britta Themann/Documents/Mosaicking/output/",out.mosaic.id,date,"/")
+dir.create(band.mosaic.dir)
+
+# output filenames
+out.band.mosaic.start <- paste0(out.mosaic.id,date,"_")
+# out.mosaic <- paste0(out.mosaic.id,date,".tif")
+out.mosaic <- paste0(out.mosaic.id,date)
+```
+
+# Mosaicking each band
+```{r}
+# go through each band
+for (b.i in 1:nbands(ex.im)){
+# for (b.i in 1:2){ # for testing
+  # b.i=1
+  # create empty image list
+  image.list <- list()
+  # fill image list
+  for (i in 1:length(file.list)){
+    # i=1
+    image <- brick(file.list[[i]])    # load raster from file list
+    image <- image[[b.i]]             # subset to one band - otherwise not enough memory
+    # plot(image)
+    if(sensor=="HyPlant"){            # HYPLANT
+      # define NAs
+      image[values(image) <= 0] <- NA  
+      # mosaicking tolerance = imagery dependent (default 0.1, has to be increased in case of origins error)
+      tol = 1
+    }else{
+      image[values(image) >= 1] <- NA # APEX
+      # mosaicking tolerance = imagery dependent (default 0.1, has to be increased in case of origins error)
+      tol = 0.8
+    }
+    # plot(image)
+    image.list[[i]] <- image        # store image in list
+  }
+  
+  # prepare single band mosaic filename
+  out.band.mosaic <- paste0(out.band.mosaic.start,bandnames[[b.i]],"_",wlnames[[b.i]],".tif")#".bsq"
+
+  # create mosaic of the first two images
+  band.mosaic <- mosaic(image.list[[1]],image.list[[2]], fun=mean, tolerance= tol, filename=paste0(band.mosaic.dir,out.band.mosaic), overwrite=TRUE) # 0.15 works with two rasters
+
+  # create raster of mosaic and remaining images
+  if (length(image.list) > 2){
+    for (r.i in 3:length(image.list)){
+      band.mosaic <- mosaic(band.mosaic,image.list[[r.i]], fun=mean, tolerance=tol, filename=paste0(band.mosaic.dir,out.band.mosaic), overwrite=TRUE)
+    }
+  }
+
+  print(paste0("Mosaic of Band ",b.i," of ",nbands(ex.im),"!"))
+  plot(band.mosaic) #test
+}
+```
+
+# Stacking band mosaics
+```{r}
+#--------------- Mosaicking bands together without executing the above ---------------
+# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180718-S3IT-1155-1200-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-02/'
+#-------------------------------------------------------------------------------------
+
+# change working directory
+setwd(band.mosaic.dir)
+
+# list band mosaics
+mosaic.list <- list.files(band.mosaic.dir, pattern="*.tif") #adjust for apex
+
+# get band and wavelength names
+bandnames <- c()
+wlnames <- c()
+for(band in 1:length(mosaic.list)){
+  im <- raster(mosaic.list[[band]])
+  bandnames[band] <- substr(names(im),90,96)
+  wlnames[band] <- as.numeric(substr(names(im),98,nchar(names(im))))
+}
+band.wl.names <- paste0(bandnames,"_",wlnames)
+
+# load Band1 and Band2
+band001 <- raster(mosaic.list[[1]])
+band002 <- raster(mosaic.list[[2]])
+mosaic.all.bands <- brick(band001,band002)
+# plot(mosaic.all.bands)
+
+# add remaining bands to the stack #PROBLEM HERE
+if (length(mosaic.list) > 2){
+  for (i in 3:length(mosaic.list)){
+    new.mosaic <- raster(mosaic.list[[i]])
+    mosaic.all.bands <- stack(mosaic.all.bands,new.mosaic)
+  }
+}
+
+# shorten band names
+names(mosaic.all.bands) <- band.wl.names
+# print(mosaic.all.bands)
+
+# convert to brick for writing to disc 
+mosaic.all.bands <- brick(mosaic.all.bands)
+
+# change working directory
+setwd("C:/Users/Britta Themann/Documents/Mosaicking/output/")
+
+# write mosaic to disc
+writeRaster(mosaic.all.bands, filename = out.mosaic,options="INTERLEAVE=BAND", overwrite = TRUE)
+
+#----------- loading test --------
+# H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/20180718-S3IT-1155-1200-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-02.gri")
+# plot(H[[1]])
+# names(H)
+#---------------------------------
+```
+
+# save bandnames
+```{r}
+# fileConn<-file("HyPlant_mosaic_bandnames.txt")
+# writeLines(band.wl.names, fileConn)
+# close(fileConn)
+```
