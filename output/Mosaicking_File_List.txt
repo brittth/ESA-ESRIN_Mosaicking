@@ -1,0 +1,20 @@
+Successfully mosaicked:
+20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03
+M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24
+M0231_Gross_180731_a06-8c_v1_Part_0-1_refl_BT_2021-03-24
+M0231_Gross_180731_a01-8c_v1_Part_0-2_refl_BT_2021-03-25
+M0216_Gross_180704_a01-06c_v1_Part_0-4_refl_BT_2021-03-26
+M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_2021-03-28
+M0214_S3B_S_180702_a01c_v1_Part_0-1_refl_BT_2021-03-29
+20180718-S3IT-1150-1525-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-29
+20180710-OHP-1059-1338-1200-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-31
+20180802-S3GER-1204-1217-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-08
+20180713-LAE-1327-1347-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-09
+20180802-CKA-1326-1329-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-13
+20180802-CKA-1310-1318-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-14
+20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15
+20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16
+
+Unsuccessful mosaicking attempts:
+M0230_Gross_180730_a01-08c_v1_Part_0-2_refl_BT_2021-03-30 	--> each flight line has a different spatial resolution
+M0215_S3B_K_180702_a01-02c_v1_Part_0_refl_BT_2021-03-31 	--> unsolved origins error
