@@ -20,30 +20,30 @@ library(stringr)
 
   # DONE
 
-# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/" # flight line 1 defective, hence excluded #DONE
-# out.mosaic.id <- "20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"#DONE
+# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/" # flight line 1 defective, hence excluded
+# out.mosaic.id <- "20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
 # TO BE USED LATER: file.list <- file.list[-1] # remove first image from list = defective 
 
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/01_Single_lines/" #DONE
-# out.mosaic.id <- "M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/01_Single_lines/"
+# out.mosaic.id <- "M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_"
 
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance/01_Single_lines/" #DONE
-# out.mosaic.id <- "M0231_Gross_180731_a06-8c_v1_Part_0-1_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance/01_Single_lines/" 
+# out.mosaic.id <- "M0231_Gross_180731_a06-8c_v1_Part_0-1_refl_BT_"
 
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance_BT_moreLines/01_Single_lines/" #DONE
-# out.mosaic.id <- "M0231_Gross_180731_a01-8c_v1_Part_0-2_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180731/01_APEX/01_TOC_Reflectance_BT_moreLines/01_Single_lines/" 
+# out.mosaic.id <- "M0231_Gross_180731_a01-8c_v1_Part_0-2_refl_BT_" 
 
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180704_BT/01_APEX/01_TOC_Reflectance/01_Single_lines/" #DONE
-# out.mosaic.id <- "M0216_Gross_180704_a01-06c_v1_Part_0-4_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180704_BT/01_APEX/01_TOC_Reflectance/01_Single_lines/"
+# out.mosaic.id <- "M0216_Gross_180704_a01-06c_v1_Part_0-4_refl_BT_"
 
-# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Jülich/" #DONE
-# out.mosaic.id <- "M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Jülich/"
+# out.mosaic.id <- "M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_"
 
-# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Selhausen/" #DONE
-# out.mosaic.id <- "M0214_S3B_S_180702_a01c_v1_Part_0-1_refl_BT_" #DONE
+# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/05_APEX/02_TOC_reflectance/01_S3B_Selhausen/"
+# out.mosaic.id <- "M0214_S3B_S_180702_a01c_v1_Part_0-1_refl_BT_"
 
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180718/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"#DONE
-# out.mosaic.id <- "20180718-S3IT-1150-1525-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_" #DONE
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180718/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"
+# out.mosaic.id <- "20180718-S3IT-1150-1525-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
 
 # input.dir <- "D:/FLEXsense/03_France_OHP/03_Airborne_data/20180710/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/" # mosaic of some flight lines already exist
 # out.mosaic.id <- "20180710-OHP-1059-1338-1200-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
@@ -68,29 +68,27 @@ library(stringr)
 # input.dir <- "D:/FLEXsense/01_Italy_Coast/03_Airborne_data/201800607/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"
 # out.mosaic.id <- "20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
 
+# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180802/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"
+# out.mosaic.id <- "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
+# # TO BE USED LATER: file.list <- file.list[5:10] # only keep the SEL flight lines
 
   # CANNOT BE MOSAICKED
 
-# each flight line has a different spatial reslution
-# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180730/02_APEX_BT/01_TOC_Reflectance/01_Single_lines/" 
+# each flight line has a different spatial resolution
+# input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180730/02_APEX_BT/01_TOC_Reflectance/01_Single_lines/"
 # out.mosaic.id <- "M0230_Gross_180730_a01-08c_v1_Part_0-2_refl_BT_"
 
 # unsolved origins error
 # input.dir <- "D:/FLEXsense/04_Germany_CKA/03_Airborne_data/20180702/01_APEX/02_TOC_Reflectance/"
 # out.mosaic.id <- "M0215_S3B_K_180702_a01-02c_v1_Part_0_refl_BT_"
 #   # from 0.17 to 0.18 tol, error message changes from 'different origins' to 'replacement length' error.
-  
 
-# TO MOSAIC
+  # TO MOSAIC
 
-# STACKING FAILED DUE TO WINDOWS CRASH
-# input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180802/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/"
-# out.mosaic.id <- "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
-# # TO BE USED LATER: file.list <- file.list[5:10] # only keep the SEL flight lines
 
 # select sensor (define NAs, tolerance, file format)
-sensor = "HyPlant"
-# sensor = "APEX"
+# sensor = "HyPlant"
+sensor = "APEX"
 ```
 
 # Load data
@@ -124,7 +122,7 @@ if(sensor == "HyPlant"){
 # file.list <- file.list[1:3]
 
 # for "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
-file.list <- file.list[5:10] # only keep the SEL flight lines
+# file.list <- file.list[5:10] # only keep the SEL flight lines
 
 #------test subset
 # file.list <- unlist(list(file.list[[1]],file.list[[2]]))# for testing only
@@ -157,8 +155,7 @@ out.mosaic <- paste0(out.mosaic.id,date)
 # Mosaicking each band
 ```{r}
 # go through each band
-# for (b.i in 1:nbands(ex.im)){
-for (b.i in 32:nbands(ex.im)){
+for (b.i in 1:nbands(ex.im)){
 # for (b.i in 1:2){ # for testing
   # b.i=31
   # create empty image list
@@ -232,8 +229,8 @@ for (b.i in 32:nbands(ex.im)){
 # band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15/'
 # out.mosaic <- "20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15"
 
-band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16/'
-out.mosaic <- "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16"
+# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16/'
+# out.mosaic <- "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16"
 #-------------------------------------------------------------------------------------
 
 # change working directory
@@ -327,7 +324,8 @@ disc <- "D:/FLEXsense/"
 # H <- brick(paste0(disc,'01_Italy_Coast/03_Airborne_data/201800607/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15.gri')) # works
 
 # H <- brick(paste0(comp,'20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16.gri'))
-# H <- brick(paste0(disc,'01_Italy_Coast/03_Airborne_data/201800607/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16.gri'))
+# H <- brick(paste0(disc,'05_Germany_Selhausen/03_Airborne_data/20180802/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16.gri'))
+
 
 plot(H[[1]])
 names(H)
