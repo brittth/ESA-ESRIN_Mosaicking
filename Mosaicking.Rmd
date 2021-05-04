@@ -21,7 +21,7 @@ library(stringr)
   # DONE
 
 # input.dir <- "D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/01_Single_lines/" # flight line 1 defective, hence excluded
-# out.mosaic.id <- "20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
+# out.mosaic.id <- "20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_"
 # TO BE USED LATER: file.list <- file.list[-1] # remove first image from list = defective 
 
 # input.dir <- "D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/01_Single_lines/"
@@ -281,8 +281,8 @@ writeRaster(mosaic.all.bands, filename = out.mosaic,options="INTERLEAVE=BAND", o
 comp <- "C:/Users/britta themann/Documents/Mosaicking/output/"
 disc <- "D:/FLEXsense/"
 
-# H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
-# H <- brick("D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
+# H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
+# H <- brick("D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
 
 # H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24.gri") # works
 # H <- brick("D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/02_Mosaic/M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24.gri") # works
