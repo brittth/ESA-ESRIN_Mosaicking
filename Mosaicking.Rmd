@@ -1,10 +1,12 @@
 ---
 title: "Mosaicking"
-output: html_document
-editor_options: 
-  chunk_output_type: console
-chunk_output_type: console
+author: "brittth"
+date: "4 May 2021"
+output: word_document
 ---
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 
 # Install and load packages
 ```{r}
@@ -143,7 +145,7 @@ if(sensor == "HyPlant"){
 
 # create folder for band mosaics
 date <- Sys.Date()
-band.mosaic.dir <- paste0("C:/Users/Britta Themann/Documents/Mosaicking/output/",out.mosaic.id,date,"/")
+band.mosaic.dir <- paste0("C:/Users/brittth/Documents/Mosaicking/output/",out.mosaic.id,date,"/")
 dir.create(band.mosaic.dir)
 
 # output filenames
@@ -214,22 +216,22 @@ for (b.i in 1:nbands(ex.im)){
 # Stacking band mosaics
 ```{r}
 #--------------- Mosaicking bands together without executing the above ---------------
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03/'
 # out.mosaic  <- '20180702-S3GER-1219-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03'
 
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_2021-03-28/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_2021-03-28/'
 # out.mosaic <- "M0213_S3B_J_180702_a01-05c_v1_Part_0-1_refl_BT_2021-03-28"
 
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180710-OHP-1059-1338-1200-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-31/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/20180710-OHP-1059-1338-1200-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-31/'
 # out.mosaic <- "20180710-OHP-1059-1338-1200-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-31"
 
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180802-CKA-1310-1318-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-14/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/20180802-CKA-1310-1318-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-14/'
 # out.mosaic <- "20180802-CKA-1310-1318-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-14"
 
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15/'
 # out.mosaic <- "20180607-COA-0848-0915-1800-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-15"
 
-# band.mosaic.dir <- 'C:/Users/britta themann/Documents/Mosaicking/output/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16/'
+# band.mosaic.dir <- 'C:/Users/brittth/Documents/Mosaicking/output/20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16/'
 # out.mosaic <- "20180802-SEL-1227-1254-600-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-04-16"
 #-------------------------------------------------------------------------------------
 
@@ -269,7 +271,7 @@ names(mosaic.all.bands) <- band.wl.names
 print(mosaic.all.bands)
 
 # change working directory
-setwd("C:/Users/Britta Themann/Documents/Mosaicking/output/")
+setwd("C:/Users/brittth/Documents/Mosaicking/output/")
 
 # write mosaic to disc
 writeRaster(mosaic.all.bands, filename = out.mosaic,options="INTERLEAVE=BAND", overwrite = TRUE)
@@ -278,13 +280,13 @@ writeRaster(mosaic.all.bands, filename = out.mosaic,options="INTERLEAVE=BAND", o
 
 # Loading test (ADJUST)
 ```{r}
-comp <- "C:/Users/britta themann/Documents/Mosaicking/output/"
+comp <- "C:/Users/brittth/Documents/Mosaicking/output/"
 disc <- "D:/FLEXsense/"
 
-# H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
+# H <- brick("C:/Users/brittth/Documents/Mosaicking/output/20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
 # H <- brick("D:/FLEXsense/05_Germany_Selhausen/03_Airborne_data/20180702/01_HyPlant_DUAL/01_TOC_Reflectance/02_Mosaic/20180702-S3GER-1223-1233-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2020-10-03.gri") # works
 
-# H <- brick("C:/Users/britta themann/Documents/Mosaicking/output/M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24.gri") # works
+# H <- brick("C:/Users/brittth/Documents/Mosaicking/output/M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24.gri") # works
 # H <- brick("D:/FLEXsense/02_Italy_Grosseto/03_Airborne_data/20180616/01_APEX/01_TOC_Reflectance/02_Mosaic/M0189_Gross_180616_a01-02c_v1_Part_0-1_refl_BT_2021-03-24.gri") # works
 
 # H <- brick(paste0(comp,"/20180718-S3IT-1150-1525-3050-MOSAIC-DUAL_radiance_img_atm_pol_smcorr-rect_BT_2021-03-29.gri")) # works
